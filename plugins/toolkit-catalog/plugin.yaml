@@ -1,0 +1,4 @@
+name: toolkit-catalog
+version: 0.1.0
+description: "Catalogue Telegram volontaire de cinq skills ; réglages natifs, installation interactive au terminal"
+entrypoint: __init__.py

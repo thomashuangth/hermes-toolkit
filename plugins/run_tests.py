@@ -9,8 +9,8 @@ root = Path(__file__).resolve().parent
 
 def main():
     with tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR")) as home:
-        env = dict(os.environ, HERMES_HOME=home, PYTHONDONTWRITEBYTECODE="1")
-        for suite in (root / "tests", root / "telegram-approval-explainer" / "tests"):
+        env = dict(os.environ, HERMES_HOME=home, HERMES_TOOLKIT_TEST_HOME=home, PYTHONDONTWRITEBYTECODE="1")
+        for suite in (root / "tests", root / "telegram-approval-explainer" / "tests", root / "toolkit-catalog" / "tests"):
             request = ["hermes", "--print-runtime-command", "--module", "unittest", "--", "discover", "-s", str(suite), "-v"]
             argv = json.loads(subprocess.check_output(request, env=env))
             subprocess.run(argv, env=env, check=True)

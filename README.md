@@ -1,6 +1,6 @@
 # Hermes Toolkit — tap portable
 
-Cinq skills originaux, en français : `session-context-recovery`, `usage-cost-audit`, `runtime-config-audit`, `scheduled-task-watchdog`, `backup-and-recovery`. Python 3.10+ pour les deux scripts, uniquement bibliothèque standard. Aucun ajout automatique de tâche cron, accès distant ni changement de configuration. Les extensions Telegram séparées sont dans `plugins/` : trois plugins adaptés et un module de formatage expérimental. **Le statut épinglé portable n’est pas encore implémenté** ; il ne faut pas confondre ce module avec la fonction complète de l’installation d’origine.
+Cinq skills originaux, en français : `session-context-recovery`, `usage-cost-audit`, `runtime-config-audit`, `scheduled-task-watchdog`, `backup-and-recovery`. Python 3.10+ pour les deux scripts, uniquement bibliothèque standard. Aucun ajout automatique de tâche cron, accès distant ni changement de configuration. Les extensions Telegram séparées sont dans `plugins/` : plugins adaptés, catalogue volontaire `/toolkit` et module de formatage expérimental. **Le statut épinglé portable n’est pas encore implémenté** ; il ne faut pas confondre ce module avec la fonction complète de l’installation d’origine.
 
 ## Installation sélective (après publication)
 
@@ -16,6 +16,10 @@ hermes skills install thomashuangth/hermes-toolkit/skills/backup-and-recovery
 Répéter uniquement la dernière commande avec le nom des skills souhaités. Le tap ajoute une source de recherche, **pas** tous les skills. Ne pas utiliser `--force` pour contourner une alerte ; lire le rapport de sécurité. Le skill `session-context-recovery` peut déjà exister : vérifier les collisions avant installation, ne pas écraser une version personnelle.
 
 Syntaxe vérifiée dans la CLI installée (`hermes skills --help`, `tap add --help`, `install --help`) et son source : `hermes_cli/skills_hub.py::do_tap`, `tools/skills_hub.py::TapsManager.add` (racine par défaut `skills/`), `tools/skills_hub_github.py::GitHubSkillsSource.fetch` (identifiant `owner/repo/path/to/skill-dir`, scripts téléchargés avec le dossier). La publication et l'installation depuis GitHub ne sont pas testées ici. Sur une autre version, relire l'aide avant installation.
+
+## Catalogue Telegram `/toolkit`
+
+Le plugin volontaire `plugins/toolkit-catalog` expose les cinq skills avec détails et état installé, puis active/désactive leur chargement **pour tout Telegram du profil** via les réglages natifs. Par défaut il reste inerte : opt-in et listes d'utilisateurs/chats obligatoires. Le bouton d'installation affiche la procédure interactive native au terminal (scanner et confirmation conservés), **pas une installation Telegram en un clic**. Bootstrap exact, sécurité, persistance et limites : `plugins/toolkit-catalog/README.md`. Vérification isolée : `python3 plugins/run_tests.py`.
 
 ## Essai local sans installer dans un profil réel
 
