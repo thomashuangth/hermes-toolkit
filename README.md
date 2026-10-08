@@ -1,10 +1,20 @@
 # Hermes Toolkit — tap portable
 
-Cinq skills originaux, en français : `session-context-recovery`, `usage-cost-audit`, `runtime-config-audit`, `scheduled-task-watchdog`, `backup-and-recovery`. Python 3.10+ pour les deux scripts, uniquement bibliothèque standard. Aucun ajout automatique de tâche cron, accès distant ni changement de configuration. Les extensions Telegram séparées sont dans `plugins/` : plugins adaptés, catalogue volontaire `/toolkit` et module de formatage expérimental. **Le statut épinglé portable n’est pas encore implémenté** ; il ne faut pas confondre ce module avec la fonction complète de l’installation d’origine.
+Six skills originaux, en français : `toolkit-manager` (bootstrap principal), `session-context-recovery`, `usage-cost-audit`, `runtime-config-audit`, `scheduled-task-watchdog`, `backup-and-recovery`. Python 3.10+ pour les scripts, uniquement bibliothèque standard. Aucun ajout automatique de tâche cron, accès distant ni changement de configuration. Les extensions Telegram séparées sont dans `plugins/` : plugins adaptés, catalogue volontaire `/toolkit` et module de formatage expérimental. **Le statut épinglé portable n’est pas encore implémenté** ; il ne faut pas confondre ce module avec la fonction complète de l’installation d’origine.
 
-## Installation sélective (après publication)
+## Démarrage principal (après publication du nouveau skill)
 
-Remplacer `thomashuangth/hermes-toolkit` par le dépôt réellement publié : il s'agit d'un emplacement, pas d'un dépôt existant garanti.
+Une seule commande au terminal du profil choisi :
+
+```sh
+hermes skills install thomashuangth/hermes-toolkit/skills/toolkit-manager
+```
+
+Conserver le scanner et la confirmation native. Dans une nouvelle session Telegram, envoyer `/toolkit-manager`, puis « Configure le catalogue toolkit » (ou directement cette phrase). La documentation native Skills System décrit les skills installés comme commandes slash ; leur présence dans le menu Telegram dépend de la version. Le skill guide l'agent : rien ne s'exécute à son installation. Après inspection du profil, IDs réels de la session et approbation du plan, son helper copie uniquement le catalogue public à un commit fixé, lance le doctor natif puis configure les allowlists/opt-in et active le plugin. Dry-run par défaut, refus d'écrasement ; aucun credential lu. Voir `skills/toolkit-manager/SKILL.md`. Le commit plugin par défaut est déjà publié ; ce nouveau skill doit encore être publié.
+
+## Installation sélective
+
+Le dépôt public est `thomashuangth/hermes-toolkit`. Le tap reste facultatif :
 
 ```sh
 hermes skills tap add thomashuangth/hermes-toolkit

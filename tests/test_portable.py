@@ -146,9 +146,9 @@ class WatchdogTests(unittest.TestCase):
                     self.assertEqual(result.stdout, '')
 
 class FormatTests(unittest.TestCase):
-    def test_five_skill_frontmatters(self):
+    def test_six_skill_frontmatters(self):
         files = sorted((ROOT / 'skills').glob('*/SKILL.md'))
-        self.assertEqual(len(files), 5)
+        self.assertEqual(len(files), 6)
         for path in files:
             text = path.read_text()
             match = re.match(r'^---\n(.*?)\n---\n(.+)', text, re.S)
