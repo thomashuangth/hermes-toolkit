@@ -1,0 +1,4 @@
+name: short-topic-names
+version: 0.1.0
+description: "Extension Telegram volontaire, compatibilité interne limitée"
+entrypoint: __init__.py
